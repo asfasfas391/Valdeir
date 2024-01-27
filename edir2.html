@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer Namorar Comigo?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #noButton {
+            position: absolute;
+        }
+
+        @keyframes grow {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #yesButton.clicked {
+            animation: grow 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quer namorar comigo?</h1>
+        <button id="yesButton">Sim</button>
+        <button id="noButton">Não</button>
+        <p id="loveMessage" style="display: none;">Te amo, lolo.</p>
+    </div>
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const loveMessage = document.getElementById('loveMessage');
+
+        yesButton.addEventListener('click', () => {
+            yesButton.classList.add('clicked');
+            setTimeout(() => {
+                yesButton.classList.remove('clicked');
+                loveMessage.style.display = 'block';
+            }, 300);
+        });
+
+        const noButton = document.getElementById('noButton');
+
+        noButton.addEventListener('mouseenter', () => {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        });
+    </script>
+</body>
+</html>
